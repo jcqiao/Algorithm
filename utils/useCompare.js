@@ -1,5 +1,5 @@
 import { generateRandomArray } from "./generateRandomArray.js";
-import { InsertSort } from "../InsertSort.js";
+import { InsertSort } from "../simpleSort/InsertSort.js";
 function index() {
   const testTime = 500000;
   const maxSize = 100;
