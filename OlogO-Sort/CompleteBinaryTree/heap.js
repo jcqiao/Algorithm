@@ -1,7 +1,7 @@
 function heapInsert(arr, index) {
-  while (arr[index] > arr[Math.floor((index - 1) / 2]) {
-    swap(arr, index, Math.floor((index - 1) / 2);
-    index = Math.floor((index - 1) / 2;
+  while (arr[index] > arr[Math.floor((index - 1) / 2)]) {
+    swap(arr, index, Math.floor((index - 1) / 2));
+    index = Math.floor((index - 1) / 2);
   }
 }
 

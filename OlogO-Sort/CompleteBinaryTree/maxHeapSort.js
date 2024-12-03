@@ -1,15 +1,17 @@
-function heapSort(arr) {
+function maxHeapSort(arr) {
   if (arr.length === null || arr.length < 2) {
     return;
   }
   for (let i = 0; i < arr.length; i++) {
-    heapInsert(arr, i);
+    // O(N)
+    heapInsert(arr, i); //NlogN
   }
   let heapSize = arr.length;
   swap(arr, 0, --heapSize);
   while (heapSize > 0) {
-    heapify(arr, 0, heapSize);
-    swap(arr, 0, --heapSize);
+    // N
+    heapify(arr, 0, heapSize); //NlogN
+    swap(arr, 0, --heapSize); // O(1)
   }
   return arr;
 }
@@ -43,4 +45,4 @@ function swap(arr, i, j) {
 }
 
 const test1 = [1, 7, 3, 8, 2, 1, 23, 0, 2];
-console.log(heapSort(test1));
+console.log(maxHeapSort(test1));
