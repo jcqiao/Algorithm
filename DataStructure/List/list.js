@@ -22,6 +22,22 @@ class List {
     }
     current.next = newNode;
   }
+  prepend(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+  }
+  print() {
+    let current = this.head;
+    while (current) {
+      console.log(current.value);
+      current = current.next;
+    }
+  }
 }
 
 export { List };
