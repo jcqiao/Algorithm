@@ -104,3 +104,45 @@ describe("List.print()", () => {
     expect(consoleSpy).toHaveBeenCalledTimes(1);
   });
 });
+describe("List.insert()", () => {
+  let list;
+
+  beforeEach(() => {
+    list = new List();
+  });
+
+  test("should insert a node at the beginning of the list", () => {
+    list.append("node1");
+    list.insert("node0", 0);
+    strictEqual(list.head.value, "node0");
+    strictEqual(list.head.next.value, "node1");
+    strictEqual(list.head.next.next, null);
+  });
+
+  test("should insert a node in the middle of the list", () => {
+    list.append("node1");
+    list.append("node3");
+    list.insert("node2", 1);
+    strictEqual(list.head.value, "node1");
+    strictEqual(list.head.next.value, "node2");
+    strictEqual(list.head.next.next.value, "node3");
+    strictEqual(list.head.next.next.next, null);
+  });
+
+  test("should insert a node at the end of the list", () => {
+    list.append("node1");
+    list.append("node2");
+    list.insert("node3", 2);
+    strictEqual(list.head.value, "node1");
+    strictEqual(list.head.next.value, "node2");
+    strictEqual(list.head.next.next.value, "node3");
+    strictEqual(list.head.next.next.next, null);
+  });
+
+  test("should not insert a node if the index is out of bounds", () => {
+    list.append("node1");
+    list.insert("node2", 5);
+    strictEqual(list.head.value, "node1");
+    strictEqual(list.head.next, null);
+  });
+});
