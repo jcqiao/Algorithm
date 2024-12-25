@@ -24,10 +24,6 @@ class List {
   }
   prepend(value) {
     const newNode = new Node(value);
-    if (!this.head) {
-      this.head = newNode;
-      return;
-    }
     newNode.next = this.head;
     this.head = newNode;
   }
