@@ -8,9 +8,11 @@ class Node {
 class List {
   constructor() {
     this.head = null;
+    this.size = 0;
   }
   append(value) {
     const newNode = new Node(value);
+    this.size++;
     if (!this.head) {
       this.head = newNode;
       return;
@@ -23,18 +25,10 @@ class List {
     current.next = newNode;
   }
   prepend(value) {
+    this.size++;
     const newNode = new Node(value);
     newNode.next = this.head;
     this.head = newNode;
-  }
-  size() {
-    let count = 0;
-    let current = this.head;
-    while (current) {
-      count++;
-      current = current.next;
-    }
-    return count;
   }
   print() {
     let current = this.head;
@@ -44,7 +38,7 @@ class List {
     }
   }
   insert(value, index) {
-    if (index < 0 || index > this.size()) {
+    if (index < 0 || index > this.size) {
       console.log("Invalid index");
       return;
     }
@@ -52,6 +46,7 @@ class List {
       this.prepend(value);
       return;
     }
+    this.size++;
     const newNode = new Node(value);
     let current = this.head;
     let i = 0;
@@ -63,6 +58,26 @@ class List {
     }
     previousNode.next = newNode;
     newNode.next = current;
+  }
+  delete(index) {
+    if (index < 0 || index >= this.size) {
+      console.log("Invalid index");
+      return;
+    }
+    this.size--;
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+    let current = this.head;
+    let prev = null;
+    let i = 0;
+    while (i < index) {
+      prev = current;
+      current = current.next;
+      i++;
+    }
+    prev.next = current.next;
   }
 }
 
