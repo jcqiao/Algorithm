@@ -37,7 +37,7 @@ class List {
       current = current.next;
     }
   }
-  insert(value, index) {
+  insert(value, index = this.size) {
     if (index < 0 || index > this.size) {
       console.log("Invalid index");
       return;
