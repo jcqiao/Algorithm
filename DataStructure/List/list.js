@@ -32,10 +32,12 @@ class List {
   }
   print() {
     let current = this.head;
+    let result = [];
     while (current) {
-      console.log(current.value);
+      result.push(current.value);
       current = current.next;
     }
+    return result.join(" -> ");
   }
   insert(value, index = this.size) {
     if (index < 0 || index > this.size) {
@@ -78,6 +80,19 @@ class List {
       i++;
     }
     prev.next = current.next;
+  }
+  reverse() {
+    let current = this.head;
+    let prev = null;
+    let next = null;
+    while (current !== null) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+    return this.head;
   }
 }
 

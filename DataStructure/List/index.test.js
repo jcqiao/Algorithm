@@ -57,51 +57,45 @@ describe("List", () => {
 });
 
 describe("List.print()", () => {
-  let consoleSpy;
+  let list;
 
   beforeEach(() => {
-    // Mock console.log
-    consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+    list = new List();
   });
 
-  afterEach(() => {
-    // Restore console.log
-    consoleSpy.mockRestore();
+  test("should print an empty list", () => {
+    const output = list.print();
+    strictEqual(output, "");
   });
 
-  test("should print all values in the list", () => {
-    const list = new List();
-    list.append(1);
-    list.append(2);
-    list.append(3);
-
-    list.print();
-
-    // Ensure console.log was called with the correct values
-    expect(consoleSpy).toHaveBeenCalledWith(1);
-    expect(consoleSpy).toHaveBeenCalledWith(2);
-    expect(consoleSpy).toHaveBeenCalledWith(3);
-    expect(consoleSpy).toHaveBeenCalledTimes(3);
+  test("should print a list with one node", () => {
+    list.append("node1");
+    const output = list.print();
+    strictEqual(output, "node1");
   });
 
-  test("should print nothing when the list is empty", () => {
-    const list = new List();
-
-    list.print();
-
-    // Ensure console.log was not called
-    expect(consoleSpy).not.toHaveBeenCalled();
+  test("should print a list with multiple nodes", () => {
+    list.append("node1");
+    list.append("node2");
+    list.append("node3");
+    const output = list.print();
+    strictEqual(output, "node1 -> node2 -> node3");
   });
 
-  test("should print a single value when the list has one element", () => {
-    const list = new List();
-    list.append(42);
+  test("should print a list with nodes prepended", () => {
+    list.prepend("node1");
+    list.prepend("node2");
+    list.prepend("node3");
+    const output = list.print();
+    strictEqual(output, "node3 -> node2 -> node1");
+  });
 
-    list.print();
-
-    // Ensure console.log was called once with the correct value
-    expect(consoleSpy).toHaveBeenCalledWith(42);
-    expect(consoleSpy).toHaveBeenCalledTimes(1);
+  test("should print a list with nodes inserted", () => {
+    list.append("node1");
+    list.append("node3");
+    list.insert("node2", 1);
+    const output = list.print();
+    strictEqual(output, "node1 -> node2 -> node3");
   });
 });
 describe("List.insert()", () => {
@@ -144,5 +138,20 @@ describe("List.insert()", () => {
     list.insert("node2", 5);
     strictEqual(list.head.value, "node1");
     strictEqual(list.head.next, null);
+  });
+});
+describe("list.reverse()", () => {
+  let list;
+
+  beforeEach(() => {
+    list = new List();
+  });
+  test("should reverse list", () => {
+    list.insert(1);
+    list.insert(2);
+    list.insert(3);
+    list.insert(4);
+    const output = list.reverse();
+    strictEqual(list.print(output), "4 -> 3 -> 2 -> 1");
   });
 });
