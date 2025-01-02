@@ -92,7 +92,6 @@ class List {
       current = next;
     }
     this.head = prev;
-    return this.head;
   }
 }
 

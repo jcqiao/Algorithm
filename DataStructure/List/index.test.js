@@ -151,7 +151,7 @@ describe("list.reverse()", () => {
     list.insert(2);
     list.insert(3);
     list.insert(4);
-    const output = list.reverse();
-    strictEqual(list.print(output), "4 -> 3 -> 2 -> 1");
+    list.reverse();
+    strictEqual(list.print(), "4 -> 3 -> 2 -> 1");
   });
 });
