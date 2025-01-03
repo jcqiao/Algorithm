@@ -9,6 +9,7 @@ class List {
   constructor() {
     this.head = null;
     this.size = 0;
+    this.reverseList = null;
   }
   append(value) {
     const newNode = new Node(value);
@@ -93,6 +94,24 @@ class List {
     }
     this.head = prev;
   }
+  reverseWithRecursive(node = this.head) {
+    if (node === null || node.next === null) {
+      this.head = node;
+      return node;
+    }
+    const newHead = this.reverseWithRecursive(node.next);
+    node.next.next = node;
+    node.next = null;
+    return newHead;
+  }
 }
+
+const list = new List();
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.reverseWithRecursive(list.head);
+console.log(list.print());
 
 export { List };
