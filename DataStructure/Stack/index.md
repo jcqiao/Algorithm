@@ -16,6 +16,9 @@ It's all constant time O(1)
 - Function calls/Recursion
 - Undo operations(in an editor)
 - Balanced Parentheses
+- Reverse order
+    1. Reverse a string
+    2. Reverse a linked list
 
 ## We can implement stack using
 
