@@ -156,27 +156,27 @@ describe("list.reverse()", () => {
   });
 });
 describe("reverseString5", () => {
-    test("should reverse a non-empty string", () => {
-        expect(reverseString5("hello")).toBe("olleh");
-    });
+  test("should reverse a non-empty string", () => {
+    expect(reverseString5("hello")).toBe("olleh");
+  });
 
-    test("should return an empty string when input is an empty string", () => {
-        expect(reverseString5("")).toBe("");
-    });
+  test("should return an empty string when input is an empty string", () => {
+    expect(reverseString5("")).toBe("");
+  });
 
-    test("should reverse a string with special characters", () => {
-        expect(reverseString5("!@#")).toBe("#@!");
-    });
+  test("should reverse a string with special characters", () => {
+    expect(reverseString5("!@#")).toBe("#@!");
+  });
 
-    test("should reverse a string with spaces", () => {
-        expect(reverseString5("hello world")).toBe("dlrow olleh");
-    });
+  test("should reverse a string with spaces", () => {
+    expect(reverseString5("hello world")).toBe("dlrow olleh");
+  });
 
-    test("should reverse a string with numbers", () => {
-        expect(reverseString5("12345")).toBe("54321");
-    });
+  test("should reverse a string with numbers", () => {
+    expect(reverseString5("12345")).toBe("54321");
+  });
 
-    test("should reverse a string with mixed characters", () => {
-        expect(reverseString5("a1b2c3")).toBe("3c2b1a");
-    });
+  test("should reverse a string with mixed characters", () => {
+    expect(reverseString5("a1b2c3")).toBe("3c2b1a");
+  });
 });
